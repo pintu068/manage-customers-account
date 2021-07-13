@@ -174,7 +174,7 @@ public class ManageAccountsService {
     public Transaction createTransactionData(CustomerRequest customerRequest) {
         Transaction transaction = new Transaction();
 
-        if (customerRequest.getInitialCredit().compareTo(BigDecimal.valueOf(0.0)) > 0) {
+        if (customerRequest.getInitialCredit().compareTo(BigDecimal.valueOf(0.0)) != 0) {
             transaction.setCustomerID(customerRequest.getCustomerID());
             transaction.setIban(Utility.generateIBAN(customerRequest.getCustomerID()));
             transaction.setCurrency(Utility.getDefaultCurrency());
@@ -194,7 +194,7 @@ public class ManageAccountsService {
     public Transaction createTransactionData(TransactionRequest transactionRequest) {
         Transaction transaction = new Transaction();
 
-        if (transactionRequest.getTxnAmount().compareTo(BigDecimal.valueOf(0.0)) > 0) {
+        if (transactionRequest.getTxnAmount().compareTo(BigDecimal.valueOf(0.0)) != 0) {
             transaction.setCustomerID(transactionRequest.getCustomerID());
             transaction.setIban(transactionRequest.getIban());
             transaction.setCurrency(transactionRequest.getCurrency());

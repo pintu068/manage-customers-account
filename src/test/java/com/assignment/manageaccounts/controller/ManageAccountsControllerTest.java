@@ -3,6 +3,7 @@ package com.assignment.manageaccounts.controller;
 import com.assignment.manageaccounts.dao.Account;
 import com.assignment.manageaccounts.dao.Customer;
 import com.assignment.manageaccounts.dao.Transaction;
+import com.assignment.manageaccounts.exception.ManageAccountsException;
 import com.assignment.manageaccounts.model.AccountTransactionResponse;
 import com.assignment.manageaccounts.model.CustomerRequest;
 import com.assignment.manageaccounts.model.TransactionRequest;
@@ -25,6 +26,7 @@ import org.mockito.internal.matchers.apachecommons.ReflectionEquals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -56,6 +58,9 @@ public class ManageAccountsControllerTest {
 
     @Autowired
     ManageTransactionRepository manageTransactionRepository;
+
+//    @MockBean
+//    ManageAccountsService service;
 
     @Autowired
     MockMvc mockMvc;
@@ -417,29 +422,6 @@ public class ManageAccountsControllerTest {
                 .andReturn();
 
         String expectedResponse = SampleCustomerResponseTestData.gethttp400InCreateAccountResponse();
-        String actualResponse = mvcResult.getResponse().getContentAsString();
-        assertEquals(expectedResponse, actualResponse);
-    }
-
-    @Test
-    public void httpInternalServerErrorInCreateAccount() throws Exception {
-        //test new creation
-        customerRequestTestData = SampleCustomerRequestTestData.insertCustomerRequestTestData();
-        CustomerRequest expectedRecord = customerRequestTestData.get("customer_request_http400_data_1");
-       // Mockito.when(this.(Mockito.any(ManageAccountsService.class))).thenThrow(ManageAccountsService.class);
-        mockMvc.perform(post("/app/v1/accounts")
-                .contentType("application/json")
-                .content(om.writeValueAsString(expectedRecord)))
-                .andDo(print())
-                .andExpect(status().isBadRequest()); 
-
-        String expectedResponse = SampleCustomerResponseTestData.gethttp400InCreateAccountResponse();
-        MvcResult mvcResult = mockMvc.perform(post("/app/v1/accounts")
-                .contentType("application/json")
-                .content(om.writeValueAsString(expectedRecord)))
-                .andDo(print())
-                .andReturn();
-
         String actualResponse = mvcResult.getResponse().getContentAsString();
         assertEquals(expectedResponse, actualResponse);
     }

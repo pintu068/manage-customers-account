@@ -1,7 +1,11 @@
 package com.assignment.manageaccounts.constants;
 
+
+/**
+ * Different Technical errors configured
+ */
+
 public enum TechnicalErrors {
-    SUCCESSFUL(200,"Successful"),
     BAD_REQUEST(400,"Bad Request"),
     INTERNAL_SERVER_ERROR(500,"Internal Server Error"),
     PARAMETER_MISSING(400,"Parameter is missing");

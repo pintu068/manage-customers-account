@@ -19,9 +19,9 @@ public class SampleTransactionResponseTestData {
     public static AccountTransactionResponse getAllTransactiononCustomer() {
 
         Map<String, List<Transaction>> data = new HashMap<>();
-        Transaction transaction1 = new Transaction(1,100012378l,"NL26BANK0100012378","EUR", Timestamp.valueOf("2021-07-11 10:21:41"), BigDecimal.valueOf(100.00));
-        Transaction transaction2 = new Transaction(1,100012378l,"NL26BANK0100012378","EUR", Timestamp.valueOf("2021-07-11 10:21:41"),BigDecimal.valueOf(100.00));
-        Transaction transaction3 = new Transaction(1,100012378l,"NL26BANK0100012378","EUR", Timestamp.valueOf("2021-07-11 10:21:41"),BigDecimal.valueOf(200.00));
+        Transaction transaction1 = new Transaction(1, 100012378l, "NL26BANK0100012378", "EUR", Timestamp.valueOf("2021-07-11 10:21:41"), BigDecimal.valueOf(100.00));
+        Transaction transaction2 = new Transaction(1, 100012378l, "NL26BANK0100012378", "EUR", Timestamp.valueOf("2021-07-11 10:21:41"), BigDecimal.valueOf(100.00));
+        Transaction transaction3 = new Transaction(1, 100012378l, "NL26BANK0100012378", "EUR", Timestamp.valueOf("2021-07-11 10:21:41"), BigDecimal.valueOf(200.00));
 
         List<Transaction> transactionList = new ArrayList<>();
         transactionList.add(transaction1);
@@ -34,7 +34,7 @@ public class SampleTransactionResponseTestData {
                 "Arjo",
                 "Vliet",
                 BigDecimal.valueOf(400.0),
-                transactionList,null);
+                transactionList, null);
 
 
         return transaction_response_test_data_1;
@@ -50,7 +50,7 @@ public class SampleTransactionResponseTestData {
                 "    \"iban\": \"NL26BANK0100012378\"\n" +
                 "}";
 
-        TransactionResponse transactionResponse=null ;
+        TransactionResponse transactionResponse = null;
         try {
             transactionResponse = mapper.readValue(inputJson, TransactionResponse.class);
         } catch (JsonProcessingException e) {
@@ -69,7 +69,7 @@ public class SampleTransactionResponseTestData {
     public static String createTransactionAccountNotFound() {
         ObjectMapper mapper = new ObjectMapper();
 
-        String inputJson="{\n" +
+        String inputJson = "{\n" +
                 "    \"result\": \"Failure\",\n" +
                 "    \"errorRecords\": [\n" +
                 "        {\n" +
@@ -79,7 +79,7 @@ public class SampleTransactionResponseTestData {
                 "    ]\n" +
                 "}";
 
-        TransactionResponse transactionResponse=null ;
+        TransactionResponse transactionResponse = null;
         try {
             transactionResponse = mapper.readValue(inputJson, TransactionResponse.class);
         } catch (JsonProcessingException e) {
@@ -98,7 +98,7 @@ public class SampleTransactionResponseTestData {
     public static String createTransactionWithIncorrectAcntAndCustomer() {
         ObjectMapper mapper = new ObjectMapper();
 
-        String inputJson="{\n" +
+        String inputJson = "{\n" +
                 "    \"result\": \"Failure\",\n" +
                 "    \"errorRecords\": [\n" +
                 "        {\n" +
@@ -112,7 +112,7 @@ public class SampleTransactionResponseTestData {
                 "    ]\n" +
                 "}";
 
-        TransactionResponse transactionResponse=null ;
+        TransactionResponse transactionResponse = null;
         try {
             transactionResponse = mapper.readValue(inputJson, TransactionResponse.class);
         } catch (JsonProcessingException e) {
@@ -131,7 +131,7 @@ public class SampleTransactionResponseTestData {
     public static String createZeroAmountInCreateTxn() {
         ObjectMapper mapper = new ObjectMapper();
 
-        String inputJson="{\n" +
+        String inputJson = "{\n" +
                 "    \"result\": \"Failure\",\n" +
                 "    \"errorRecords\": [\n" +
                 "        {\n" +
@@ -141,7 +141,7 @@ public class SampleTransactionResponseTestData {
                 "    ]\n" +
                 "}";
 
-        TransactionResponse transactionResponse=null ;
+        TransactionResponse transactionResponse = null;
         try {
             transactionResponse = mapper.readValue(inputJson, TransactionResponse.class);
         } catch (JsonProcessingException e) {
@@ -160,7 +160,7 @@ public class SampleTransactionResponseTestData {
     public static String validateCustomerWithAccount() {
         ObjectMapper mapper = new ObjectMapper();
 
-        String inputJson="{\n" +
+        String inputJson = "{\n" +
                 "    \"result\": \"Failure\",\n" +
                 "    \"errorRecords\": [\n" +
                 "        {\n" +
@@ -170,7 +170,7 @@ public class SampleTransactionResponseTestData {
                 "    ]\n" +
                 "}";
 
-        AccountTransactionResponse accountTransactionResponse=null ;
+        AccountTransactionResponse accountTransactionResponse = null;
         try {
             accountTransactionResponse = mapper.readValue(inputJson, AccountTransactionResponse.class);
         } catch (JsonProcessingException e) {
@@ -200,7 +200,7 @@ public class SampleTransactionResponseTestData {
                 "    ]\n" +
                 "}";
 
-        CustomerResponse customerResponse=null ;
+        CustomerResponse customerResponse = null;
         try {
             customerResponse = mapper.readValue(inputJson, CustomerResponse.class);
         } catch (JsonProcessingException e) {

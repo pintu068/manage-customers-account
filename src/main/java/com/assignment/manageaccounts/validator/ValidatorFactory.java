@@ -1,7 +1,11 @@
 package com.assignment.manageaccounts.validator;
-
 import com.assignment.manageaccounts.constants.ValidatorType;
 import com.assignment.manageaccounts.exception.ManageAccountsException;
+
+
+/**
+ * Validator factory to generate object of all validations
+ */
 
 public class ValidatorFactory {
 

@@ -18,7 +18,7 @@ public class SampleCustomerResponseTestData {
                 "    ]\n" +
                 "}";
 
-        CustomerResponse customerResponse=null ;
+        CustomerResponse customerResponse = null;
         try {
             customerResponse = mapper.readValue(inputJson, CustomerResponse.class);
         } catch (JsonProcessingException e) {
@@ -43,12 +43,12 @@ public class SampleCustomerResponseTestData {
                 "    \"errorRecords\": [\n" +
                 "        {\n" +
                 "            \"errorId\": 10002,\n" +
-                "            \"errorMessage\": \"Current current account already exist\"\n" +
+                "            \"errorMessage\": \"Customer current account already exist\"\n" +
                 "        }\n" +
                 "    ]\n" +
                 "}";
 
-        CustomerResponse customerResponse=null ;
+        CustomerResponse customerResponse = null;
         try {
             customerResponse = mapper.readValue(inputJson, CustomerResponse.class);
         } catch (JsonProcessingException e) {
@@ -77,7 +77,36 @@ public class SampleCustomerResponseTestData {
                 "    ]\n" +
                 "}";
 
-        CustomerResponse customerResponse=null ;
+        CustomerResponse customerResponse = null;
+        try {
+            customerResponse = mapper.readValue(inputJson, CustomerResponse.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        if (customerResponse != null) {
+            try {
+                inputJson = mapper.writeValueAsString(customerResponse);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }
+        return inputJson;
+    }
+
+    public static String gethttp500InCreateAccountResponse() {
+        ObjectMapper mapper = new ObjectMapper();
+
+        String inputJson = "{\n" +
+                "    \"result\": \"Failure\",\n" +
+                "    \"errorRecords\": [\n" +
+                "        {\n" +
+                "            \"errorId\": 500,\n" +
+                "            \"errorMessage\": \"Internal Server Error\"\n" +
+                "        }\n" +
+                "    ]\n" +
+                "}";
+
+        CustomerResponse customerResponse = null;
         try {
             customerResponse = mapper.readValue(inputJson, CustomerResponse.class);
         } catch (JsonProcessingException e) {

@@ -1,8 +1,12 @@
 package com.assignment.manageaccounts.validator;
-
 import com.assignment.manageaccounts.constants.ValidationChainType;
 import com.assignment.manageaccounts.constants.ValidatorType;
 import com.assignment.manageaccounts.exception.ManageAccountsException;
+
+
+/**
+ * Validator chain to check different validation type per service.
+ */
 
 public class ValidatorChainGenerator {
 

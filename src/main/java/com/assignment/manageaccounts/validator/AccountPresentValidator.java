@@ -3,7 +3,6 @@ package com.assignment.manageaccounts.validator;
 import com.assignment.manageaccounts.constants.BusinessErrors;
 import com.assignment.manageaccounts.constants.ValidatorType;
 import com.assignment.manageaccounts.dao.Account;
-import com.assignment.manageaccounts.model.CustomerRequest;
 import com.assignment.manageaccounts.model.ErrorRecord;
 import com.assignment.manageaccounts.model.ValidationData;
 import com.assignment.manageaccounts.repository.ManageAccountsRepository;
@@ -11,6 +10,12 @@ import com.assignment.manageaccounts.services.BeanUtil;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+
+
+/**
+ * Class for Account check if account for the customer exists or not
+ * If account not found fetch business error
+ */
 
 public class AccountPresentValidator extends Validator {
     ManageAccountsRepository manageAccountsRepository;
@@ -22,9 +27,9 @@ public class AccountPresentValidator extends Validator {
 
     @Override
     public List<ErrorRecord> handle(ValidationData validationData) {
-        List<Account> account= manageAccountsRepository.findByCustomerIdAndIban(validationData.getCustomerID(),validationData.getIban());
+        List<Account> account = manageAccountsRepository.findByCustomerIdAndIban(validationData.getCustomerID(), validationData.getIban());
 
-        if(CollectionUtils.isEmpty(account))
+        if (CollectionUtils.isEmpty(account))
             result.add(new ErrorRecord(BusinessErrors.CUSTOMER_ACCOUNT_NOT_FOUND.getErrorCode(), BusinessErrors.CUSTOMER_ACCOUNT_NOT_FOUND.getErrorMessage()));
         return result;
     }

@@ -1,7 +1,6 @@
 package com.assignment.manageaccounts.validator;
 
 import com.assignment.manageaccounts.constants.ValidatorType;
-import com.assignment.manageaccounts.model.CustomerRequest;
 import com.assignment.manageaccounts.model.ErrorRecord;
 import com.assignment.manageaccounts.model.ValidationData;
 import com.assignment.manageaccounts.repository.ManageCustomerRepository;
@@ -9,16 +8,17 @@ import com.assignment.manageaccounts.repository.ManageCustomerRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Validator implements ValidatorInterface{
+
+/**
+ * Validator handler to validate and add all errors.
+ */
+
+public abstract class Validator implements ValidatorInterface {
 
     ManageCustomerRepository manageCustomerRepository;
-
-
-
     private Validator nextValidator;
     protected List<ErrorRecord> result;
     private final ValidatorType type;
-
 
     protected Validator(ValidatorType type) {
         this.type = type;
@@ -31,7 +31,7 @@ public abstract class Validator implements ValidatorInterface{
         List<ErrorRecord> errorRecords = this.handle(validationData);
         if (nextValidator != null)
             nextValidator.validate(validationData)
-                    .forEach((value) -> errorRecords.add( value));
+                    .forEach((value) -> errorRecords.add(value));
         return errorRecords;
     }
 
