@@ -147,11 +147,11 @@ CI/CD pipline has been configured on Azure Devops. This will be part of intervie
 
 
 #### 3. Endpoints to access the REST services
-`Create Customer Account`     http://localhost:8080/app/v1/accounts
+`Create Customer Account`     POST http://localhost:8080/app/v1/accounts
 
-`Create Customer Information` http://localhost:8080/app/v1/accounts/transactions?customerid=<"CustomerId of customer">&iban=<"Account number of customer">
+`Create Customer Information` GET http://localhost:8080/app/v1/accounts/transactions?customerid=<"CustomerId of customer">&iban=<"Account number of customer">
 
-`Create Transactions`         http://localhost:8080/app/v1/accounts/transactions
+`Create Transactions`         POST http://localhost:8080/app/v1/accounts/transactions
 
 
 #### 4. Test Execution
