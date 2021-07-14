@@ -170,4 +170,4 @@ CI/CD pipline has been configured on Azure Devops. This will be part of intervie
 
 #### 7. Scope for improvement
 1. This project can be fit in microservices architecture.
-2. Secure service endpoint by implementing security and rate limit
+2. Secure service endpoint by implementing security and rate limit.
